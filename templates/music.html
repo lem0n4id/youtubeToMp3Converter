@@ -33,7 +33,7 @@
       </div>
       <div class="container row">
 	<div class="container col-auto duration-label">
-	  <p class="duration-label">Duration</p>
+	  <p class="duration-label">Duration(Seconds)</p>
 	</div>
 	<div class="container col-auto">
 	  <p id="duration">{{ video_duration }}</p>
@@ -50,7 +50,9 @@
 	</div>
       </div>
       <div class="row container" id="download-button">
-	<button type="button" class="btn btn-success">Download Now!</button>
+      <form id="dwform" action="/dw" method="POST">
+	      <a href="{{ url_for('download_anchor') }}"><button type="submit" name='download' class="btn btn-success">Download Now!</button></a>
+      </form>
       </div>
     </div>
   </div>
