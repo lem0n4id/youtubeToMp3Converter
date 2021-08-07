@@ -1,37 +1,18 @@
-from flask import Flask, request, render_template, send_file, redirect, abort
-# ffmpeg==1.4
+from flask import Flask , render_template, request
 
-from flask.wrappers import Response
 app = Flask(__name__)
 
+@app.route('/',methods =["GET"])
+def main():
 
-@app.route('/')
-def index() -> Response:
-   return render_template('index.html')
+    # return render_template('music.html',page_title="App Name",video_title="Hello",video_duration="150",video_thumbnail="https://i.ytimg.com/vi/OxGsU8oIWjY/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD2_XbqmOsuO-8PQKd9B7RFMW5m6w")
+    return render_template('index.html')
 
+@app.route('/ABC', methods =["GET", "POST"])
+def my_form_post():
+    if request.method == "POST":
+        text = request.form['url']
+        processed_text = text.upper()
+        return render_template('music.html',page_title="App Name",video_title=processed_text,video_duration="150",video_thumbnail="https://i.ytimg.com/vi/OxGsU8oIWjY/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD2_XbqmOsuO-8PQKd9B7RFMW5m6w")
 
-@app.route('/download')
-def download_anchor() -> Response:
-	
-	
-   try:
-      path = r"upload/downloadFile.txt"
-      # path = r"upload/downloadFiles.txt"
-      return send_file(path, as_attachment=True)
-   except:
-         return redirect('/downloadfailed')
-      
-
-
-@app.route('/downloadfailed')
-def downloadFailed() -> Response:
-   try:
-      return render_template('fileError.html')
-   except:
-        abort(404)
-
-
-
-
-if __name__ == '__main__':
-   app.run(debug = True)
+app.run(debug=True)

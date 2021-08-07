@@ -1,0 +1,30 @@
+body {
+    background: #282a36 !important;
+}
+.center-div {
+    border: 1px solid #ff5555;
+    border-radius: 30px;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#download-button {
+    margin: 10px;
+    color: #ff5555 !important;
+}
+#duration {
+    color: #50fa7b;
+    padding: 10px;
+}
+.duration-label {
+    color: #ff79c6;
+    padding: 10px;
+}
+.format-label {
+    color: #bd93f9;
+    padding: 10px;
+}
+.title-label {
+    color: #ffffff;
+}

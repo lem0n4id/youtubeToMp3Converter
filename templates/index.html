@@ -1,7 +1,21 @@
-<!DOCTYPE html>
-<html>
-    <body>
-        <h1>Hello World</h1>
-        <a href="{{ url_for('download_anchor') }}">File</a>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block meta %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='index.css') }}"/>
+{% endblock %}
+{% block main %}
+<div class="container h-100">
+  <div class="d-flex justify-content-center h-100">
+    <div class="searchbar">
+      <form id="urlform" action="/ABC" method="POST">
+	<input class="search_input" type="text" id="searchbar" name="url" placeholder="Url...">
+	<a href="/" onclick="click()" class="search_icon"><i class="fas fa-music"></i></a>
+	</form>
+    </div>
+  </div>
+</div>
+<script>
+  function click() {
+      document.getElementById("urlform").submit()
+  }
+</script>
+{% endblock %}
