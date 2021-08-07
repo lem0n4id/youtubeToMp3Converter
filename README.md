@@ -13,7 +13,7 @@
 
     or 
 
-    ```py -m pip install virtualenv```
+    ```py -m virtualenv .```
 
 2. Initalize your virtualenv using
 
