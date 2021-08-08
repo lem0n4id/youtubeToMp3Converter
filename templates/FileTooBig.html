@@ -1,6 +1,19 @@
-<!DOCTYPE html>
-<html>
-    <body>
-        <h2>File too big</h2>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block main %}
+<style>
+  h1 , p {
+      color: black;
+  }
+  .center {
+      margin-top: 450px;
+  }
+</style>
+<div class="container center">
+  <div class="d-flex justify-content-center">
+    <div class="jumbotron">
+      <h1 class="display-4">Sorry the file's too Big!</h1>
+      <p class="lead"> We do not support video with more than 40 minutes of content.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

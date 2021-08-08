@@ -22,17 +22,17 @@
     </ul>
   </div>
 </nav>
-<div class="container center-div" id="center-div">
+<div class="container center-div">
   <div class="container row">
     <div class="container col-4">
-      <img src="{{ video_thumbnail }}"/ class="img-fliud" alt="Video Thumbnail">
+      <img src="{{ video_thumbnail }}"/ class="img-fliud thumbnail" alt="Video Thumbnail">
     </div>
-    <div class="col-8 container">
+    <div class="col-8 container info">
       <div class="container row">
 	<p class="text-center title-label">{{ video_title }}</p>
       </div>
       <div class="container row">
-	<div class="container col-auto duration-label">
+	<div class="container col-auto">
 	  <p class="duration-label">Duration(Seconds)</p>
 	</div>
 	<div class="container col-auto">
@@ -44,8 +44,6 @@
 	<div class="container col-auto">
 	  <select class="form-control">
 	    <option>mp3</option>
-	    <option>m4a</option>
-	    <option>m3u</option>
 	  </select>
 	</div>
       </div>

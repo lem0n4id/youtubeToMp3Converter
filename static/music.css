@@ -3,6 +3,7 @@ body {
 }
 .center-div {
     border: 1px solid #ff5555;
+    background: #282a36;
     border-radius: 30px;
     padding: 50px;
     display: flex;
@@ -27,4 +28,14 @@ body {
 }
 .title-label {
     color: #ffffff;
+}
+.thumbnail {
+    border: 1px solid #50fa7b;
+    padding: 20px;
+}
+.info {
+    border: 1px solid #bd93f9;
+    padding: 30px;
+    border-radius: 10px;
+    background: #282a36;
 }
