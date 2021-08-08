@@ -41,7 +41,7 @@ def my_form_post():
                 bool = checkIfExists(filename)
                 # If file exists then dont download
                 if bool == False:
-                    data = download_url(url)
+                    data = download_url(url,filename)
                 else:
                     pass
 
@@ -57,21 +57,35 @@ def my_form_post():
 @app.route('/dw', methods=["POST"])
 def download_anchor():
     """Download Button"""
-    try:
 
-        # filename = 'sendfile.txt'  # need a way to get this from /music
-        filename = session['filename']
-        path = "upload/temp/"+filename
-        # path = r"upload/downloadFiles.txt"
-        return send_file(path, as_attachment=True)
 
-    except:
-        pass
+    # filename = 'sendfile.txt'  # need a way to get this from /music
+    filename = session['filename']
+    fileDirName = filename[:5].replace('.', '')
 
-@app.route('/about', methods=["GET","POST"])
-def About():
-    return render_template('about.html')
+    base_path=os.getcwd() #C:\Users\Lemon\Documents\GitHub\youtubeToMp3Converter\upload
 
+    os.chdir(base_path)
+
+    filepath = os.path.join(base_path , fileDirName) #C:\Users\Lemon\Documents\GitHub\youtubeToMp3Converter\upload\Demon
+
+    # os.chdir(filepath)
+
+    # a=os.getcwd()
+    # with open('a.txt','w') as f:
+    #     print(a,file=f)
+
+    # path = os.path.join(filepath , filename)    
+    # with open('path.txt','w') as f:
+    #     print(path,file=f)
+
+    # filepath = f"\{fileDirName}\\{filename}"
+    # path=os.path.join(base_path,filepath)
+    # path = r"upload/downloadFiles.txt"
+    
+    return send_file(path, as_attachment=True)
+
+    
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()#debug=True)
