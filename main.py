@@ -68,6 +68,10 @@ def download_anchor():
     except:
         pass
 
+@app.route('/about', methods=["GET","POST"])
+def About():
+    return render_template('about.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
