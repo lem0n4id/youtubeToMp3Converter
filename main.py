@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file , session
 from downloadsong import *
 
 app = Flask(__name__)
-
+app.secret_key = "SOME SECRET KEY"
 
 @app.route('/', methods=["GET"])
 def main():
@@ -36,6 +36,7 @@ def my_form_post():
                 songTitle = data[0]
                 title = decorateFilenameValue(songTitle)
                 filename = title+'.mp3'
+                session['filename'] = filename
 
                 bool = checkIfExists(filename)
                 # If file exists then dont download
@@ -58,7 +59,8 @@ def download_anchor():
     """Download Button"""
     try:
 
-        filename = 'sendfile.txt'  # need a way to get this from /music
+        # filename = 'sendfile.txt'  # need a way to get this from /music
+        filename = session['filename']
         path = "upload/temp/"+filename
         # path = r"upload/downloadFiles.txt"
         return send_file(path, as_attachment=True)
