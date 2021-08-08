@@ -122,7 +122,18 @@ def download_url(url: str, filename: str) -> tuple:
     return filename, data["duration"], data["thumbnails"][0]['url']
 
 
+def delete_mp3file(filename: str):
+    '''Deletes the mp3 file present in the temp dir'''
+    fileDirName = filename[:5].replace('.', '')
+    # with open('abc.txt','w') as f:
+    #     print(os.getcwd(),file=f)
+    
+    # os.chdir(r'C:\Users\Lemon\Documents\GitHub\youtubeToMp3Converter\upload')
 
+    os.chdir(f'./temp')
+    print(os.getcwd())
+    shutil.rmtree(f'./{fileDirName}')
+    
 
 if __name__ == '__main__':
     filename = download_url('https://www.youtube.com/watch?v=LiaYDPRedWQ','abc.mp3')

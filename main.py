@@ -78,6 +78,10 @@ def download_anchor():
 
     path = os.path.join(filepath , filename)  #C:\Users\Lemon\Documents\GitHub\youtubeToMp3Converter\upload\Demon\Demon Slayer Kimetsu no Yaiba OP - Gurenge - LiSA - Cover (fingerstyle guitar) Anime.mp3
   
+    @app.teardown_request
+    def delete(response):
+        delete_mp3file(filename)
+        return response
     # with open('path.txt','w') as f:
     #     print(path,file=f)
 
