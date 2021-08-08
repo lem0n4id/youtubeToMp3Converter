@@ -3,9 +3,10 @@ body {
 }
 .center-div {
     border: 1px solid #ff5555;
-    background: #282a36;
+    background: #353b48;
     border-radius: 30px;
     padding: 50px;
+    margin-top: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,4 +39,9 @@ body {
     padding: 30px;
     border-radius: 10px;
     background: #282a36;
+}
+
+.title {
+    color: white;
+    padding-bottom: 10px;
 }
