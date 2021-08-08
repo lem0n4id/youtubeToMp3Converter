@@ -65,9 +65,9 @@ def download_anchor():
 
     base_path=os.getcwd() #C:\Users\Lemon\Documents\GitHub\youtubeToMp3Converter\upload
 
-    os.chdir(base_path)
 
     filepath = os.path.join(base_path , fileDirName) #C:\Users\Lemon\Documents\GitHub\youtubeToMp3Converter\upload\Demon
+    os.chdir(filepath)
 
     # os.chdir(filepath)
 
