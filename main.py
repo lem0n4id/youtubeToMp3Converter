@@ -57,17 +57,19 @@ def my_form_post():
 @app.route('/dw', methods=["POST"])
 def download_anchor():
     """Download Button"""
-    try:
 
-        # filename = 'sendfile.txt'  # need a way to get this from /music
-        filename = session['filename']
-        path = "upload/temp/"+filename
-        # path = r"upload/downloadFiles.txt"
-        return send_file(path, as_attachment=True)
 
-    except:
-        pass
+    # filename = 'sendfile.txt'  # need a way to get this from /music
+    filename = session['filename']
+    path = "upload/temp/"+filename
+    # path = r"upload/downloadFiles.txt"
+    @app.teardown_request
+    def delete(response):
+        delete_mp3file(filename)
+        return response
+    return send_file(path, as_attachment=True)
 
+    
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()#debug=True)

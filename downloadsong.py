@@ -4,7 +4,8 @@ import youtubesearchpython
 from youtubesearchpython.internal.constants import ResultMode
 
 
-# import subprocess
+import subprocess
+import shutil
 
 
 def checkIfExists(filename: str) -> bool:
@@ -58,7 +59,10 @@ Example for using subprocess.Popen():
         text=pipe.communicate() #type = tuple
         print(text[1].decode("utf-8"))    
 '''
-
+def subprocess_cm(args):
+    pipe = subprocess.Popen(args,shell=True, stderr=subprocess.PIPE)
+    text=pipe.communicate()
+    return text
 
 def download_url(url: str) -> tuple:
     """Downloads the mp3 file for the url passed and returns the filename,duration and thumbnail url"""
@@ -145,13 +149,43 @@ def download_url(url: str) -> tuple:
 
 def delete_mp3file(file):
     location = os.getcwd()
-    dir = f"temp"
+    dir = r"upload\temp"
     path = os.path.join(location, dir)
+    
+    args=f'cd {path}'
+    print(path)
+    # b=subprocess_cm(args)
+
+    # print(b)
+    print(os.getcwd())
+    path='upload/temp'
     os.chdir(path)
-    os.remove(file)
+    print('workind dict',os.getcwd())
+    b=subprocess_cm('ls')
+    print(b)
+    name = [filenames for root, dir, filenames in os.walk(
+        f"upload") ]
+    print(name)
+    # try:
+    # os.remove('C:\Users\Lemon\Documents\GitHub\youtubeToMp3Converter\upload\temp\sng')
+    # except FileNotFoundError:
+        # print('file not found')
+
+
 
 
 if __name__ == '__main__':
     # filename = download_url('https://www.youtube.com/watch?v=LiaYDPRedWQ')
     # delete_mp3file(filename)  # Avril Lavigne - Hello Kitty.mp3
-    checkIfExists('Harry Styles - Watermelon Sugar (Official Video).mp3')
+    # checkIfExists('Harry Styles - Watermelon Sugar (Official Video).mp3')
+    a='Demon Slayer Kimetsu no Yaiba OP - Gurenge - LiSA - Cover (fingerstyle guitar) Anime.mp3'
+    # delete_mp3file(a)
+    # os.remove(r"C:\Users\Lemon\Documents\GitHub\youtubeToMp3Converter\upload\temp\Demon Slayer Kimetsu no Yaiba OP - Gurenge - LiSA - Cover (fingerstyle guitar) Anime.mp3")
+    os.remove(r'C:\Users\Lemon\Documents\GitHub\youtubeToMp3Converter\upload\temp\Demon Slayer Kimetsu no Yaiba OP - Gurenge - LiSA - Cover (fingerstyle guitar) Anime.mp3')
+    # shutil.rmtree(r'C:\Users\Lemon\Documents\GitHub\youtubeToMp3Converter\upload\temp\sng')
+
+    '''
+    To Do-
+    Change file system from /temp/..mp3 to /temp/{filename[:5].remove('.')}/...mp3
+    change os.remove to shutil.rmtree
+    '''
